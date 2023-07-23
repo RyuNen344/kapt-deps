@@ -1,0 +1,55 @@
+plugins {
+    id("org.jetbrains.kotlin.multiplatform")
+    id("org.jetbrains.kotlin.kapt")
+    id("com.android.library")
+    id("com.google.dagger.hilt.android")
+    id("app.cash.sqldelight").version("2.0.0-rc02")
+    id("com.dorongold.task-tree").version("2.1.1")
+}
+
+kotlin {
+    androidTarget()
+    sourceSets {
+        androidMain {
+            dependsOn(commonMain)
+            dependencies {
+                implementation("app.cash.sqldelight:android-driver:2.0.0-rc02")
+            }
+        }
+    }
+}
+
+kapt {
+    correctErrorTypes = true
+}
+
+sqldelight {
+    databases {
+        create("Database") {
+            packageName.set("io.github.ryunen344.kapt.deps.db.sqlite")
+        }
+    }
+}
+
+android {
+    namespace = "io.github.ryunen344.kapt.deps.dp"
+    compileSdk = 33
+    defaultConfig {
+        minSdk = 24
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KaptGenerateStubs).configureEach {
+        kotlinOptions {
+            jvmTarget = "17"
+        }
+    }
+
+    dependencies.implementation("com.google.dagger:hilt-android:2.47")
+    dependencies.add("kapt", "com.google.dagger:hilt-android-compiler:2.47")
+}
+
+configurations.each { println it.name }

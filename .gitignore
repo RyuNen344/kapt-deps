@@ -1,0 +1,46 @@
+# general
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# intellij
+*.iml
+/.idea/.gitignore
+/.idea/.name
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+/.idea/compiler.xml
+/.idea/git_toolbox_prj.xml
+/.idea/gradle.xml
+/.idea/kotlinc.xml
+/.idea/misc.xml
+/.idea/vcs.xml
+/.idea/shelf/
+/.idea/jarRepositories.xml
+/.idea/markdown.xml
+/.idea/deploymentTargetDropDown.xml
+/.idea/androidTestResultsUserPreferences.xml
+
+# gradle
+.gradle
+/local.properties
+
+# xcode
+xcuserdata/
+DerivedData/
+
+# bundler
+.bundle/vendor/
+
+# Tink
+Framework/Pods
+Framework/Tink.xcframework
+
+# build
+build/
+.build/
+releases/
